@@ -23,7 +23,7 @@ public class WC
         scan = new Scanner(file);
         System.out.println(chars);        
         
-        scan.useDelimiter("[ \n]+");
+        scan.useDelimiter("[ \n.]+");
         while (scan.hasNext())
         {
             String word = scan.next();
