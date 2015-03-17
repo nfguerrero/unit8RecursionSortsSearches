@@ -25,6 +25,11 @@ public class ListMethodsRunner
          {
              System.out.println(i);
          }
+         System.out.println("Odd:");
+         for (Integer i : ListMethods.odd(tempList))
+         {
+             System.out.println(i);
+         }
       }
    }
 }

@@ -61,4 +61,22 @@ public class ListMethods
            return list;
        }
    }
+   
+   public static ArrayList<Integer> odd(ArrayList<Integer> tList)
+   {
+       ArrayList<Integer> list = ListMethods.deepClone(tList);
+       if (list.size() < 1)
+       {
+           return list;
+       }
+       else
+       {
+           list.remove(0);
+           Integer num = list.get(0);
+           list.remove(0);
+           list = ListMethods.odd(list);
+           list.add(0, num);
+           return list;
+       }
+   }
 }
