@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class FractalTreeViewer
 {
-    private final int WIDTH = 400;
+    private final int WIDTH = 450;
     private final int HEIGHT = 500;
     
     private final int MIN = 1, MAX = 5;
@@ -30,7 +30,7 @@ public class FractalTreeViewer
         this.titleLabel.setForeground(Color.black);
         
         this.orderLabel = new JLabel("Order: 1");
-        this.orderLabel.setForeground (Color.black);
+        this.orderLabel.setForeground(Color.black);
         
         this.tools.add(titleLabel);
         this.tools.add(Box.createHorizontalStrut (20));
