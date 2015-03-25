@@ -1,7 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
-public class FractalTreeViewer
+public class FractalTreeViewer implements ActionListener
 {
     private final int WIDTH = 450;
     private final int HEIGHT = 500;
@@ -29,13 +30,20 @@ public class FractalTreeViewer
         this.titleLabel = new JLabel("The Fractal Tree");
         this.titleLabel.setForeground(Color.black);
         
+        this.increase = new JButton(new ImageIcon ("increase.gif"));
+        this.increase.setMargin(new Insets (0, 0, 0, 0));
+        this.increase.addActionListener(this);
+        this.decrease = new JButton(new ImageIcon ("decrease.gif"));
+        this.decrease.setMargin(new Insets (0, 0, 0, 0));
+        this.decrease.addActionListener(this);
+        
         this.orderLabel = new JLabel("Order: 1");
         this.orderLabel.setForeground(Color.black);
         
         this.tools.add(titleLabel);
         this.tools.add(Box.createHorizontalStrut (20));
-        //this.tools.add(decrease);
-        //this.tools.add(increase);
+        this.tools.add(decrease);
+        this.tools.add(increase);
         this.tools.add(Box.createHorizontalStrut (20));
         this.tools.add(orderLabel);
         
@@ -51,5 +59,22 @@ public class FractalTreeViewer
         this.frame.setSize(WIDTH, HEIGHT);
         this.frame.add(panel);
         this.frame.setVisible(true);
+    }
+    
+    public void actionPerformed (ActionEvent event)
+    {
+        int order = drawing.getOrder();
+
+        if (event.getSource() == increase)
+            order++;
+        else
+            order--;
+
+        if (order >= MIN && order <= MAX)
+        {
+            orderLabel.setText ("Order: " + order);
+            drawing.setOrder (order);
+            frame.repaint();
+        }
     }
 }
