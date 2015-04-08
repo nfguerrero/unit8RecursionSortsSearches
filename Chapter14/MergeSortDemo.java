@@ -18,8 +18,8 @@ public class MergeSortDemo
       //String sort
       System.out.println();
       
-      //String[] b = ArrayUtil.randomStringArray(20, 100);
-      String[] b = ArrayUtil.stringArray();
+      String[] b = ArrayUtil.randomStringArray(20, 100);
+      //String[] b = ArrayUtil.stringArray();
       System.out.println(Arrays.toString(b));
       
       MergeSorter.sort(b);
