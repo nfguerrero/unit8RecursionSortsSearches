@@ -24,7 +24,7 @@ public class FractalPanel extends JPanel
     
     public void drawFractal(int order, int x1, int y1, int x2, int y2, int angle, Graphics g2)
     {
-        int x3, y3, x4, y4, deltaAngle, newAngle;
+        int x3, y3, x4, y4, deltaAngle, newAngle, oldAngle;
         if (order == 1)
         {
             g2.drawLine(x1, y1, x2, y2);
@@ -33,20 +33,21 @@ public class FractalPanel extends JPanel
         {
             double dist = Math.sqrt(((x2-x1)*(x2-x1))+((y2-y1)*(y2-y1)));
             
-            deltaAngle = 90 - angle;
+            deltaAngle =  (int) Math.toRadians((int) angle);
             int height = (int) (dist*(Math.sin(deltaAngle)));
             int side = (int) (dist*(Math.cos(deltaAngle)));
             
             x3 = x2 + side;
             x4 = x2 - side;
-            y3 = y2 - height;
-            y4 = y2 - height;
+            y3 = y1 - height;
+            y4 = y1 - height;
             
-            //newAngle = this.angle
+            newAngle = this.angle+angle;
+            oldAngle = this.angle-angle;
             
-            drawFractal(order-1, x1, y1, x2, y2, angle, g2);
-            drawFractal(order-1, x2, y2, x3, y3, angle, g2);
-            drawFractal(order-1, x2, y2, x4, y4, angle, g2);
+            drawFractal(order-1, x1, y1, x2, y2, oldAngle, g2);
+            drawFractal(order-1, x1, y1, x3, y3, newAngle, g2);
+            drawFractal(order-1, x1, y1, x4, y4, newAngle, g2);
         }
     }
     
@@ -72,5 +73,10 @@ public class FractalPanel extends JPanel
     public void setAngle(int angle)
     {
         this.angle = angle;
+    }
+    
+    public int getAngle()
+    {
+        return this.angle;
     }
 }

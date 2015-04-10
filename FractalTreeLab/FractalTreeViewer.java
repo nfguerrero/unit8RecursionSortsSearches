@@ -64,17 +64,24 @@ public class FractalTreeViewer implements ActionListener
     public void actionPerformed (ActionEvent event)
     {
         int order = drawing.getOrder();
-
+        int angle = drawing.getAngle();
+        
         if (event.getSource() == increase)
+        {
             order++;
+            angle += 30;
+        }        
         else
+        {
             order--;
-
+            angle -= 30;
+        }
+        
         if (order >= MIN && order <= MAX)
         {
             orderLabel.setText ("Order: " + order);
-            drawing.setOrder (order);
-            drawing.setAngle(order*30-30);
+            drawing.setOrder(order);
+            drawing.setAngle(60+angle);
             frame.repaint();
         }
     }
